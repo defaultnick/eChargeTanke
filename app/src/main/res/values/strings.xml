@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">eChargeTanke</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="edit_hint">Dateien eingeben</string>
+    <string name="title_activity_main">eCharge-Tanke</string>
+    <string name="action_search">Suchen</string>
+    <string name="action_compose">Erstellen</string>
+    <string name="action_pass_reset">Passwort zurücksetzen</string>
+    <string name="action_abmelden">Abmelden</string>
+    <string name="action_login_reset">Login zurücksetzen</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <string-array name="drawerTitles_array">
+        <item>Info</item>
+        <item>Rechnungen</item>
+        <item>Karte</item>
+    </string-array>
+    <string-array name="drawerSubtitles_array">
+        <item>Allgemeine Informationen</item>
+        <item>Zeige aktuelle Rechnungen</item>
+        <item>Anzeige der Tankstellen</item>
+    </string-array>
+
+    <string name="title_activity_maps">Tankstellen-Karte</string>
+    <string name="title_activity_info">InfoActivity</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="title_activity_login">eCharge-Tanke</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Passwort</string>
+
+    <string name="action_sign_in_register">Anmelden</string>
+    <string name="action_sign_in_short">Anmelden</string>
+
+    <string name="action_forgot_password">Passwort zurücksetzen</string>
+
+    <string name="login_progress_signing_in">Anmelden&#8230;</string>
+    <string name="error_invalid_email">Die E-Mail-Adresse ist falsch</string>
+    <string name="error_invalid_password">Das Passwort ist zu kurz</string>
+    <string name="error_incorrect_password">Das Passwort ist falsch</string>
+    <string name="error_field_required">Das ist ein Pflichtfeld</string>
+    <string name="error_network_access">Kein Internet-Zugriff/Server offline</string>
+    <string name="error_incorrect_userpass">Falsche E-Mail/Passwort-Kombination</string>
+</resources>

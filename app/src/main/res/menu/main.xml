@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="de.hawhamburg.sea2.echargeTanke.MainActivity">
+
+    <item
+        android:id="@+id/action_recover_password"
+        android:title="@string/action_pass_reset"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_abmelden"
+        android:title="@string/action_abmelden"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+</menu>
