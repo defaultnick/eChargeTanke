@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         mTitle = getTitle();
@@ -66,8 +70,14 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_abmelden:
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 db.resetTables();
-                Intent login = new Intent(this, LoginActivity.class);
+
+                Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+                login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(login);
+                break;
+
+            case R.id.action_close:
+                System.exit(0);
                 break;
 
             default:

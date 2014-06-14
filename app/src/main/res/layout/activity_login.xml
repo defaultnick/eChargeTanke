@@ -28,9 +28,11 @@
 
         <LinearLayout
             style="@style/LoginFormContainer"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TextView
+        <TextView
                 android:id="@+id/login_status_message"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:fontFamily="sans-serif-light"

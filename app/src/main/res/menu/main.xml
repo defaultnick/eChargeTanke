@@ -13,4 +13,16 @@
         android:title="@string/action_abmelden"
         android:orderInCategory="100"
         app:showAsAction="never" />
+
+    <group
+        android:id="@+id/group1"
+
+        android:visible="true"
+        android:enabled="true">
+        <item
+            android:id="@+id/action_close"
+            android:title="@string/action_close"
+            android:orderInCategory="200"
+            app:showAsAction="never" />
+    </group>
 </menu>

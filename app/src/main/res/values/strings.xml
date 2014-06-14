@@ -9,6 +9,8 @@
     <string name="action_compose">Erstellen</string>
     <string name="action_pass_reset">Passwort zurücksetzen</string>
     <string name="action_abmelden">Abmelden</string>
+    <string name="action_abstandshalter"></string>
+    <string name="action_close">AdminClose</string>
     <string name="action_login_reset">Login zurücksetzen</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
