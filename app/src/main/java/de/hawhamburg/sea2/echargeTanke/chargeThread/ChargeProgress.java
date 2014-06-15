@@ -1,6 +1,23 @@
 package de.hawhamburg.sea2.echargeTanke.chargeThread;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.widget.Toast;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Observable;
+
+import de.hawhamburg.sea2.echargeTanke.R;
+import de.hawhamburg.sea2.echargeTanke.library.Consts;
+import de.hawhamburg.sea2.echargeTanke.library.UserFunctions;
 
 /**
  * Created by Daniel on 11.06.2014.
@@ -9,6 +26,8 @@ public class ChargeProgress extends Observable {
 
     // wird vom Observer abgegriffen
     private int progressStatus;
+    private double price;
+    private double kws;
 
     // Wartezeit für unterschiedliche Ladezyklen
     private int sleepTime;
@@ -69,6 +88,10 @@ public class ChargeProgress extends Observable {
                         isDone = true;
 
                         //Ladevorgang zur Rechnung addieren
+                        // TODO
+                        // BITTE IRGENDWIE RANDOM SETZEN DANIEL!
+                        price = 12.22;
+                        kws = 2.3;
                         addToBudget();
 
                         // Observer benachrichtigen
@@ -98,11 +121,36 @@ public class ChargeProgress extends Observable {
      * Erhöht den Betrag der Rechnung, um den Aufladebetrag
      */
     public void addToBudget(){
-
+        new Budget().execute();
     }
 
     public boolean getIsDone(){
         return isDone;
     }
+
+
+    private class Budget extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            UserFunctions userFunction = new UserFunctions();
+            userFunction.addBudget(kws, price);
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean th) {
+            if (th == true) {
+            } else {
+            }
+        }
+    }
+
+
 }
 

@@ -10,6 +10,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -55,6 +56,20 @@ public class UserFunctions {
         List params = new ArrayList();
         params.add(new BasicNameValuePair("tag", forpass_tag));
         params.add(new BasicNameValuePair("forgotpassword", forgotpassword));
+        JSONObject json = jsonParser.getJSONFromUrl(Consts.apiURL, params);
+        return json;
+    }
+
+    public JSONObject addBudget(Double kws, Double price) {
+        DatabaseHandler db = new DatabaseHandler(Consts.context);
+        HashMap hm = db.getUserDetails();
+        String email = hm.get("email").toString();
+
+        List params = new ArrayList();
+        params.add(new BasicNameValuePair("tag", "addBill"));
+        params.add(new BasicNameValuePair("email", email));
+        params.add(new BasicNameValuePair("kws", kws.toString()));
+        params.add(new BasicNameValuePair("price", price.toString()));
         JSONObject json = jsonParser.getJSONFromUrl(Consts.apiURL, params);
         return json;
     }

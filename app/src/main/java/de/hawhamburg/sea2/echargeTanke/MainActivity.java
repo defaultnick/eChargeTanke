@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.HashMap;
 
 
+import de.hawhamburg.sea2.echargeTanke.library.Consts;
 import de.hawhamburg.sea2.echargeTanke.library.DatabaseHandler;
 import de.hawhamburg.sea2.echargeTanke.ChargingMenuActivity;
 
@@ -25,6 +26,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Consts.context = getApplicationContext();
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
