@@ -259,6 +259,7 @@ public class LoginActivity extends ActionBarActivity {
 
         @Override
         protected void onPreExecute() {
+
             super.onPreExecute();
             ShowDialog("Internet", "prüfe...", true);
         }

@@ -1,6 +1,7 @@
 package de.hawhamburg.sea2.echargeTanke.observer;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -54,9 +55,8 @@ public class ObserverProgressBar implements Observer {
         // Wenn die ProgressBar voll ist, wird kommuniziert über getIsDone..., soll der buttonNext enabled werden
         // klappt leider nicht....
         if(myObservableProgress.getIsDone()){
-            // myActivity.findViewById(R.id.buttonNext).setEnabled(true);
+
         }
     }
-
 
 }

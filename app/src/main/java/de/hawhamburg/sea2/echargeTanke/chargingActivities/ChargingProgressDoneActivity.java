@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.os.AsyncTask;
 
 import de.hawhamburg.sea2.echargeTanke.ChargingMenuActivity;
 import de.hawhamburg.sea2.echargeTanke.R;
@@ -16,8 +17,9 @@ public class ChargingProgressDoneActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charging_progress_done);
         this.setTitle("Done");
-        ThreadWaitTime aWaitTime = new ThreadWaitTime();
-        aWaitTime.start();
+       ThreadWaitTime aWaitTime = new ThreadWaitTime();
+       aWaitTime.execute();
+
     }
 
 
@@ -40,23 +42,35 @@ public class ChargingProgressDoneActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class ThreadWaitTime extends Thread{
+    public class ThreadWaitTime extends AsyncTask<Void, Void, Boolean> {
 
         @Override
-        public void run() {
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
+        @Override
+        protected Boolean doInBackground(Void... params) {
             try {
-                sleep(4000);
+                Thread.sleep(4000);
                 startChargingMenu();
             } catch (InterruptedException e1) {
-                this.interrupt();
+
             }
+
+            return true;
         }
+
+        @Override
+        protected void onPostExecute(Boolean th) {
+
+        }
+
 
     }
 
     public void startChargingMenu(){
-        Intent pr = new Intent(this, ChargingMenuActivity.class);
-        startActivity(pr);
+        Intent chargeMenu = new Intent(this, ChargingMenuActivity.class);
+        startActivity(chargeMenu);
     }
 }

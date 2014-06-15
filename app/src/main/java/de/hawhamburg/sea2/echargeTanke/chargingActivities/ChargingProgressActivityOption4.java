@@ -26,7 +26,7 @@ public class ChargingProgressActivityOption4 extends ActionBarActivity {
 
         myProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         myStartButton = (Button) findViewById(R.id.buttonStartProgress);
-        myNextButton = (Button) findViewById(R.id.buttonNext);
+        //myNextButton = (Button) findViewById(R.id.buttonNext);
     }
 
 
@@ -56,7 +56,14 @@ public class ChargingProgressActivityOption4 extends ActionBarActivity {
      * @param v
      */
     public void onButtonKlickStartProgress(View v){
-        ChargeProgress aProgress = new ChargeProgress(1600);
+
+        int timeZyklus = 1600;
+        double priceKwh = 1.20;
+        double kwHour = 6;
+
+        this.findViewById(R.id.buttonStartProgress).setEnabled(false);
+
+        ChargeProgress aProgress = new ChargeProgress(timeZyklus, kwHour, priceKwh);
         ObserverProgressBar aOberserverProgressBar = new ObserverProgressBar(myProgressBar, aProgress, this);
         aProgress.addObserver(aOberserverProgressBar);
     }

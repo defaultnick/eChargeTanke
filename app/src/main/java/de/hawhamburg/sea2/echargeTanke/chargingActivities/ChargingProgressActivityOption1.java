@@ -25,7 +25,7 @@ public class ChargingProgressActivityOption1 extends ActionBarActivity {
         this.setTitle("Ladevorgang 30 Minuten");
         myProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         myStartButton = (Button) findViewById(R.id.buttonStartProgress);
-        myNextButton = (Button) findViewById(R.id.buttonNext);
+//        myNextButton = (Button) findViewById(R.id.buttonNext);
     }
 
 
@@ -56,8 +56,15 @@ public class ChargingProgressActivityOption1 extends ActionBarActivity {
      */
     public void onButtonKlickStartProgress(View v){
 
+        int timeZyklus = 50;
+        double priceKwh = 1.20;
+        double kwHour = 0.5;
+
+        //  myActivity.findViewById(R.id.buttonNext).setEnabled(true);
+        this.findViewById(R.id.buttonStartProgress).setEnabled(false);
+
         // Zu Testzwecken erstmal auf 50 Millisekunden gesetzt, später dann 200ms
-        ChargeProgress aProgress = new ChargeProgress(50);
+        ChargeProgress aProgress = new ChargeProgress(timeZyklus, kwHour, priceKwh);
         ObserverProgressBar aOberserverProgressBar = new ObserverProgressBar(myProgressBar, aProgress, this);
         aProgress.addObserver(aOberserverProgressBar);
     }

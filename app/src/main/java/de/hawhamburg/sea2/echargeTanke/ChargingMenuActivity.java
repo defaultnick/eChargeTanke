@@ -1,5 +1,6 @@
 package de.hawhamburg.sea2.echargeTanke;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import de.hawhamburg.sea2.echargeTanke.chargingActivities.ChargingProgressActivityOption1;
 import de.hawhamburg.sea2.echargeTanke.chargingActivities.ChargingProgressActivityOption2;
@@ -94,5 +96,13 @@ public class ChargingMenuActivity extends ActionBarActivity {
         radioButtonOption4.setChecked(false);
         Intent optionProgress4 = new Intent(this, ChargingProgressActivityOption4.class);
         startActivity(optionProgress4);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Context aContext = getApplicationContext();
+        CharSequence aTipp = "Bitte einen Ladezyklus wählen!";
+        int duration = Toast.LENGTH_LONG;
+        Toast aToastBrot = Toast.makeText(aContext,aTipp,duration);
     }
 }

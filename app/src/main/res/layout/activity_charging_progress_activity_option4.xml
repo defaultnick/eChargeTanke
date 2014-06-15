@@ -36,15 +36,16 @@
         android:layout_marginTop="50dp"
         android:onClick="onButtonKlickStartProgress"/>
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
-        android:id="@+id/buttonNext"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="... if complete press back ..."
+        android:id="@+id/textViewCompleteTip"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="onButtonKlickNext"
-        android:enabled="false"/>
+        android:textColor="#2db7ff"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
 
 </RelativeLayout>

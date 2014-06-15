@@ -26,8 +26,8 @@ public class ChargeProgress extends Observable {
 
     // wird vom Observer abgegriffen
     private int progressStatus;
-    private double price;
-    private double kws;
+    private double priceKwH;
+    private double kwHour;
 
     // Wartezeit für unterschiedliche Ladezyklen
     private int sleepTime;
@@ -35,12 +35,16 @@ public class ChargeProgress extends Observable {
     private boolean isDone = false;
 
 
-    public ChargeProgress(int aSleepTime){
+    public ChargeProgress(int aSleepTime, double aKws, double aPrice){
 
         progressStatus = 0;
         sleepTime = aSleepTime;
+        priceKwH = aPrice;
+        kwHour = aKws;
+
         ExecutiveProgress exectuiveThread = new ExecutiveProgress();
-        exectuiveThread.start();
+        exectuiveThread.execute();
+
     }
 
     /*******************************************************
@@ -52,9 +56,63 @@ public class ChargeProgress extends Observable {
      * Benachrichtigt bei nach jedem erhöhen die Observer
      * Benachrichtigt die Observer, wenn progressStatus 1 erreicht hat
      *******************************************************/
-    private class ExecutiveProgress extends Thread{
+    private class ExecutiveProgress extends AsyncTask<Void, Void, Boolean> {
+
+        boolean deltaReached = false;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
         @Override
+        protected Boolean doInBackground(Void... params) {
+
+                for(int i = 0; i < 100; i++){
+
+                    // 100 Millisekunden schlafen
+                    try {
+                        Thread.sleep(sleepTime);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    // Schrittweise um speed faktor erhöhen
+                    progressStatus += 1;
+
+                    // doneText = "Working...";
+                    // Observer benachrichtigen
+                    setChanged();
+                    notifyObservers();
+
+                    // deltaReached bestimmen
+                    deltaReached = ( progressStatus <= 100 );
+                }
+                if(deltaReached){
+
+                    // ProgressStatus reset
+                    progressStatus = 0;
+                    isDone = true;
+
+                    //Ladevorgang zur Rechnung addieren
+                    // TODO
+
+
+                    // addToBudget();
+
+                    // Observer benachrichtigen
+                    setChanged();
+                    notifyObservers();
+            }
+
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean th) {
+
+        }
+
+       /* @Override
         public void run(){
 
             boolean deltaReached = false;
@@ -89,10 +147,9 @@ public class ChargeProgress extends Observable {
 
                         //Ladevorgang zur Rechnung addieren
                         // TODO
-                        // BITTE IRGENDWIE RANDOM SETZEN DANIEL!
-                        price = 12.22;
-                        kws = 2.3;
-                        addToBudget();
+
+
+                        // addToBudget();
 
                         // Observer benachrichtigen
                         setChanged();
@@ -106,7 +163,7 @@ public class ChargeProgress extends Observable {
                     this.interrupt();
                 }
             }
-        }
+        }*/
     }
 
     /**
@@ -139,7 +196,7 @@ public class ChargeProgress extends Observable {
         @Override
         protected Boolean doInBackground(Void... params) {
             UserFunctions userFunction = new UserFunctions();
-            userFunction.addBudget(kws, price);
+            userFunction.addBudget(kwHour, priceKwH);
             return true;
         }
 
