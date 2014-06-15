@@ -54,7 +54,7 @@ public class ObserverProgressBar implements Observer {
         // Wenn die ProgressBar voll ist, wird kommuniziert über getIsDone..., soll der buttonNext enabled werden
         // klappt leider nicht....
         if(myObservableProgress.getIsDone()){
-            myActivity.findViewById(R.id.buttonNext).setEnabled(true);
+            // myActivity.findViewById(R.id.buttonNext).setEnabled(true);
         }
     }
 
