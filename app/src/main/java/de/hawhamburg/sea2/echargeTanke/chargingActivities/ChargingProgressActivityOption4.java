@@ -67,15 +67,4 @@ public class ChargingProgressActivityOption4 extends ActionBarActivity {
         ObserverProgressBar aOberserverProgressBar = new ObserverProgressBar(myProgressBar, aProgress, this);
         aProgress.addObserver(aOberserverProgressBar);
     }
-
-    /**
-     * Bei klick auf den next Button (der ist vorerst disabled)
-     * Soll die DoneActivity aufgerufen werden
-     *
-     * */
-    public void onButtonKlickNext(View v){
-
-        Intent charginDoneActivity = new Intent(this, ChargingProgressDoneActivity.class);
-        startActivity(charginDoneActivity);
-    }
 }
