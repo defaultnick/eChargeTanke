@@ -29,5 +29,11 @@
     <string name="title_activity_maps">Tankstellen-Karte</string>
     <string name="title_activity_info">InfoActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_charging_menu">ChargingMenuActivity</string>
+    <string name="title_activity_charging_progress_activity_option1">ChargingProgressActivityOption1</string>
+    <string name="title_activity_charging_progress_activity_option2">ChargingProgressActivityOption2</string>
+    <string name="title_activity_charging_progress_activity_option3">ChargingProgressActivityOption3</string>
+    <string name="title_activity_charging_progress_activity_option4">ChargingProgressActivityOption4</string>
+    <string name="title_activity_charging_progress_done">ChargingProgressDoneActivity</string>
 
 </resources>

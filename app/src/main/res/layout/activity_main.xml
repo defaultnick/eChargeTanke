@@ -31,6 +31,17 @@
             android:textColor="#2db7ff"
             android:visibility="visible" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="... wait ..."
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#2db7ff"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal|bottom" />
+
     </FrameLayout>
     <!-- The navigation drawer -->
 

@@ -16,6 +16,7 @@ import java.util.HashMap;
 
 
 import de.hawhamburg.sea2.echargeTanke.library.DatabaseHandler;
+import de.hawhamburg.sea2.echargeTanke.ChargingMenuActivity;
 
 public class MainActivity extends ActionBarActivity {
     private CharSequence mTitle;
@@ -35,6 +36,8 @@ public class MainActivity extends ActionBarActivity {
         HashMap hm = db.getUserDetails();
         tvBegruessungName = (TextView) findViewById(R.id.viewBegruessungName);
         tvBegruessungName.setText((String) hm.get("fname"));
+        ThreadWaitTime aWaitTime = new ThreadWaitTime();
+        aWaitTime.start();
 
         // Bereitet die ActionBar auf den Navigation Drawer vor
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -108,4 +111,23 @@ public class MainActivity extends ActionBarActivity {
         toast.show();
     }
 
+    public class ThreadWaitTime extends Thread{
+
+        @Override
+        public void run() {
+
+           try {
+                sleep(4000);
+               startChargingMenu();
+            } catch (InterruptedException e1) {
+                this.interrupt();
+            }
+        }
+
+    }
+
+    public void startChargingMenu(){
+        Intent pr = new Intent(this, ChargingMenuActivity.class);
+        startActivity(pr);
+    }
 }

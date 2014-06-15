@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.hawhamburg.sea2.echargeTanke"
     android:versionCode="1"
-    android:versionName="1.0">
+    android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -12,30 +12,53 @@
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@style/CustomActionBarTheme">
-        <!--  android:label="@string/app_name" -->
+        android:theme="@style/CustomActionBarTheme" >
+
+        <!-- android:label="@string/app_name" -->
         <!-- android:theme="@style/AppTheme" > -->
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
-
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login">
+            android:label="@string/title_activity_login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".PasswordReset"
             android:label="@string/action_pass_reset"
-            android:parentActivityName=".LoginActivity">
+            android:parentActivityName=".LoginActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="LoginActivity" />
+        </activity>
+        <activity
+            android:name=".ChargingMenuActivity"
+            android:label="@string/title_activity_charging_menu" >
+        </activity>
+        <activity
+            android:name=".chargingActivities.ChargingProgressActivityOption1"
+            android:label="@string/title_activity_charging_progress_activity_option1" >
+        </activity>
+        <activity
+            android:name=".chargingActivities.ChargingProgressActivityOption2"
+            android:label="@string/title_activity_charging_progress_activity_option2" >
+        </activity>
+        <activity
+            android:name=".chargingActivities.ChargingProgressActivityOption3"
+            android:label="@string/title_activity_charging_progress_activity_option3" >
+        </activity>
+        <activity
+            android:name=".chargingActivities.ChargingProgressActivityOption4"
+            android:label="@string/title_activity_charging_progress_activity_option4" >
+        </activity>
+        <activity
+            android:name=".chargingActivities.ChargingProgressDoneActivity"
+            android:label="@string/title_activity_charging_progress_done" >
         </activity>
     </application>
 
