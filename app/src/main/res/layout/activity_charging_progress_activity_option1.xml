@@ -40,13 +40,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="... if complete press back ..."
+        android:text="... bitte warten ..."
         android:id="@+id/textViewCompleteTip"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:textColor="#2db7ff"
         android:textStyle="bold"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:visibility="invisible"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abbrechen"
+        android:id="@+id/buttonAbbruch"
+        android:layout_above="@+id/textViewCompleteTip"
+        android:layout_centerHorizontal="true"
+        android:onClick="onButtonKlickAbbruch"/>
 
 
 </RelativeLayout>

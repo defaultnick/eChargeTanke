@@ -13,7 +13,7 @@ import de.hawhamburg.sea2.echargeTanke.R;
 import de.hawhamburg.sea2.echargeTanke.chargeThread.ChargeProgress;
 import de.hawhamburg.sea2.echargeTanke.observer.ObserverProgressBar;
 
-public class ChargingProgressActivityOption4 extends ActionBarActivity {
+public class ChargingProgressActivityOption4 extends ChargeProgressActivityOptionAbstract {
 
     private ProgressBar myProgressBar;
     private Button myStartButton, myNextButton;
@@ -26,7 +26,7 @@ public class ChargingProgressActivityOption4 extends ActionBarActivity {
 
         myProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         myStartButton = (Button) findViewById(R.id.buttonStartProgress);
-        //myNextButton = (Button) findViewById(R.id.buttonNext);
+
     }
 
 
@@ -57,11 +57,18 @@ public class ChargingProgressActivityOption4 extends ActionBarActivity {
      */
     public void onButtonKlickStartProgress(View v){
 
-        int timeZyklus = 1600;
+        // 800
+        int timeZyklus = 25;
         double priceKwh = 1.20;
         double kwHour = 6;
 
+
         this.findViewById(R.id.buttonStartProgress).setEnabled(false);
+        this.findViewById(R.id.buttonAbbruch).setEnabled(false);
+        this.findViewById(R.id.buttonAbbruch).setVisibility(View.INVISIBLE);
+        this.findViewById(R.id.textViewCompleteTip).setVisibility(View.VISIBLE);
+
+        this.setPrice((priceKwh*kwHour));
 
         ChargeProgress aProgress = new ChargeProgress(timeZyklus, kwHour, priceKwh);
         ObserverProgressBar aOberserverProgressBar = new ObserverProgressBar(myProgressBar, aProgress, this);

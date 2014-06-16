@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="... wait ..."
+            android:text="... bitte warten ..."
             android:textStyle="bold"
             android:textSize="20dp"
             android:textColor="#2db7ff"

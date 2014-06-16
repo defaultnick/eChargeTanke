@@ -34,12 +34,13 @@ public class ChargeProgress extends Observable {
 
     private boolean isDone = false;
 
-
     public ChargeProgress(int aSleepTime, double aKws, double aPrice){
 
         progressStatus = 0;
         sleepTime = aSleepTime;
-        priceKwH = aPrice;
+
+        // 30% Gewinnaufschlag bei Preis pro Kilowatt pro Stunde
+        priceKwH = aPrice +(aPrice*0.3);
         kwHour = aKws;
 
         ExecutiveProgress exectuiveThread = new ExecutiveProgress();
@@ -97,7 +98,7 @@ public class ChargeProgress extends Observable {
                     // TODO
 
 
-                    // addToBudget();
+                    addToBudget();
 
                     // Observer benachrichtigen
                     setChanged();
@@ -111,59 +112,6 @@ public class ChargeProgress extends Observable {
         protected void onPostExecute(Boolean th) {
 
         }
-
-       /* @Override
-        public void run(){
-
-            boolean deltaReached = false;
-
-            while (!isInterrupted()) {
-                try {
-
-                    // ProgressStatus auf 0
-                    progressStatus = 0;
-
-                    for(int i = 0; i < 100; i++){
-
-                        // 100 Millisekunden schlafen
-                        sleep(sleepTime);
-
-                        // Schrittweise um speed faktor erhöhen
-                        progressStatus += 1;
-
-                        // doneText = "Working...";
-                        // Observer benachrichtigen
-                        setChanged();
-                        notifyObservers();
-
-                        // deltaReached bestimmen
-                        deltaReached = ( progressStatus <= 100 );
-                    }
-                    if(deltaReached){
-
-                        // ProgressStatus reset
-                        progressStatus = 0;
-                        isDone = true;
-
-                        //Ladevorgang zur Rechnung addieren
-                        // TODO
-
-
-                        // addToBudget();
-
-                        // Observer benachrichtigen
-                        setChanged();
-                        notifyObservers();
-
-                        // Thread beenden
-                        this.interrupt();
-                    }
-
-                } catch (InterruptedException e1) {
-                    this.interrupt();
-                }
-            }
-        }*/
     }
 
     /**
@@ -184,7 +132,8 @@ public class ChargeProgress extends Observable {
     public boolean getIsDone(){
         return isDone;
     }
-
+    public double getPriceKwH(){ return priceKwH; }
+    public double getKwHour(){ return kwHour; }
 
     private class Budget extends AsyncTask<Void, Void, Boolean> {
 

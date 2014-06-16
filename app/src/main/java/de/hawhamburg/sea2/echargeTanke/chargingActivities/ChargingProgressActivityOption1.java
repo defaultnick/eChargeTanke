@@ -8,24 +8,30 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import de.hawhamburg.sea2.echargeTanke.ChargingMenuActivity;
 import de.hawhamburg.sea2.echargeTanke.R;
 import de.hawhamburg.sea2.echargeTanke.chargeThread.ChargeProgress;
 import de.hawhamburg.sea2.echargeTanke.observer.ObserverProgressBar;
 
-public class ChargingProgressActivityOption1 extends ActionBarActivity {
+public class ChargingProgressActivityOption1 extends ChargeProgressActivityOptionAbstract {
 
     private ProgressBar myProgressBar;
-    private Button myStartButton, myNextButton;
+    private Button myStartButton, myButtonAbbruch;
+    private TextView myTextViewCompleteTip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charging_progress_activity_option1);
         this.setTitle("Ladevorgang 30 Minuten");
+
+
         myProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         myStartButton = (Button) findViewById(R.id.buttonStartProgress);
-//        myNextButton = (Button) findViewById(R.id.buttonNext);
+        myButtonAbbruch = (Button) findViewById(R.id.buttonAbbruch);
+//      myNextButton = (Button) findViewById(R.id.buttonNext);
     }
 
 
@@ -56,28 +62,21 @@ public class ChargingProgressActivityOption1 extends ActionBarActivity {
      */
     public void onButtonKlickStartProgress(View v){
 
-        int timeZyklus = 50;
+        // 50
+        int timeZyklus = 25;
         double priceKwh = 1.20;
         double kwHour = 0.5;
 
-        //  myActivity.findViewById(R.id.buttonNext).setEnabled(true);
         this.findViewById(R.id.buttonStartProgress).setEnabled(false);
+        this.findViewById(R.id.buttonAbbruch).setEnabled(false);
+        this.findViewById(R.id.buttonAbbruch).setVisibility(View.INVISIBLE);
+        this.findViewById(R.id.textViewCompleteTip).setVisibility(View.VISIBLE);
+        this.setPrice((priceKwh*kwHour));
 
         // Zu Testzwecken erstmal auf 50 Millisekunden gesetzt, später dann 200ms
         ChargeProgress aProgress = new ChargeProgress(timeZyklus, kwHour, priceKwh);
         ObserverProgressBar aOberserverProgressBar = new ObserverProgressBar(myProgressBar, aProgress, this);
         aProgress.addObserver(aOberserverProgressBar);
-    }
-
-    /**
-     * Bei klick auf den next Button (der ist vorerst disabled)
-     * Soll die DoneActivity aufgerufen werden
-     *
-     * */
-    public void onButtonKlickNext(View v){
-
-        Intent charginDoneActivity = new Intent(this, ChargingProgressDoneActivity.class);
-        startActivity(charginDoneActivity);
     }
 
 }

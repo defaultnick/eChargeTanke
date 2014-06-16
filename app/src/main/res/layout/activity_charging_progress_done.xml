@@ -12,26 +12,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="... Done ..."
+        android:text="Ladevorgang abgeschlossen"
         android:id="@+id/textBegruessung"
         android:layout_gravity="center"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         android:textColor="#2db7ff"
         android:visibility="visible"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="... wait ..."
+        android:text="... bitte warten ..."
         android:textStyle="bold"
         android:textSize="20dp"
         android:textColor="#2db7ff"
         android:id="@+id/textViewWait"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ladepreis"
+        android:id="@+id/textViewChargingCosts"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#2db7ff"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Aufladekosten:"
+        android:id="@+id/textViewChargingCostsTitle"
+        android:layout_above="@+id/textViewChargingCosts"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="#2db7ff"/>
 
 </RelativeLayout>
