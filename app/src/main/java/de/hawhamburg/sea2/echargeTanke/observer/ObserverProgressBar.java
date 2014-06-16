@@ -44,7 +44,7 @@ public class ObserverProgressBar implements Observer {
         // Wenn die ProgressBar voll ist, wird kommuniziert über getIsDone..., soll der buttonNext enabled werden
         // klappt leider nicht....
         if(myObservableProgress.getIsDone()){
-            myChargingPrice = (myObservableProgress.getPriceKwH()*myObservableProgress.getKwHour());
+            myChargingPrice = (myObservableProgress.getChargingPrice()*myObservableProgress.getChargingKwPerHour());
             myActivity.startDoneActivity(myChargingPrice);
         }
     }

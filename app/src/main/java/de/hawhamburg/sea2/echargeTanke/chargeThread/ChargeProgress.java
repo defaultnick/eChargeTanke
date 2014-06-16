@@ -26,22 +26,22 @@ public class ChargeProgress extends Observable {
 
     // wird vom Observer abgegriffen
     private int progressStatus;
-    private double priceKwH;
-    private double kwHour;
+    private double chargingPrice;
+    private double chargingKwPerHour;
 
     // Wartezeit für unterschiedliche Ladezyklen
     private int sleepTime;
 
     private boolean isDone = false;
 
-    public ChargeProgress(int aSleepTime, double aKws, double aPrice){
+    public ChargeProgress(int aSleepTime, double aChargingKwPerHour, double aPriceChargingKwPerHour){
 
         progressStatus = 0;
         sleepTime = aSleepTime;
 
         // 30% Gewinnaufschlag bei Preis pro Kilowatt pro Stunde
-        priceKwH = aPrice +(aPrice*0.3);
-        kwHour = aKws;
+        chargingPrice = (aPriceChargingKwPerHour +(aPriceChargingKwPerHour*0.3))*aChargingKwPerHour;
+        chargingKwPerHour = aChargingKwPerHour;
 
         ExecutiveProgress exectuiveThread = new ExecutiveProgress();
         exectuiveThread.execute();
@@ -132,8 +132,18 @@ public class ChargeProgress extends Observable {
     public boolean getIsDone(){
         return isDone;
     }
-    public double getPriceKwH(){ return priceKwH; }
-    public double getKwHour(){ return kwHour; }
+
+    /**
+     * charging Price GESAMT
+     * @return
+     */
+    public double getChargingPrice(){ return chargingPrice; }
+
+    /**
+     * charging Kw Per Hour
+     * @return
+     */
+    public double getChargingKwPerHour(){ return chargingKwPerHour; }
 
     private class Budget extends AsyncTask<Void, Void, Boolean> {
 
@@ -145,7 +155,7 @@ public class ChargeProgress extends Observable {
         @Override
         protected Boolean doInBackground(Void... params) {
             UserFunctions userFunction = new UserFunctions();
-            userFunction.addBudget(kwHour, priceKwH);
+            userFunction.addBudget(chargingKwPerHour, chargingPrice);
             return true;
         }
 
