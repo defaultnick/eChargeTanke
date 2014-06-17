@@ -14,53 +14,56 @@
         android:layout_height="wrap_content"
         android:textColor="#2db7ff"
         android:textStyle="bold"
-        android:textSize="20dp"
-        android:id="@+id/textViewTitle" />
+        android:textSize="40dp"
+        android:id="@+id/textViewTitle"
+        android:layout_centerHorizontal="true"/>
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30 Minuten"
         android:id="@+id/radioButtonOption1"
-        android:layout_marginLeft="32dp"
         android:textColor="#2db7ff"
+        android:onClick="onRadioButtonClickOption1"
         android:layout_below="@+id/textViewTipp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="onRadioButtonClickOption1"/>
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1 Stunde"
         android:id="@+id/radioButtonOption2"
-        android:layout_below="@+id/radioButtonOption1"
-        android:layout_alignLeft="@+id/radioButtonOption1"
         android:layout_alignStart="@+id/radioButtonOption1"
         android:textColor="#2db7ff"
-        android:onClick="onRadioButtonClickOption2"/>
+        android:onClick="onRadioButtonClickOption2"
+        android:layout_below="@+id/radioButtonOption1"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2 Stunden"
         android:id="@+id/radioButtonOption3"
-        android:layout_below="@+id/radioButtonOption2"
-        android:layout_alignLeft="@+id/radioButtonOption2"
         android:layout_alignStart="@+id/radioButtonOption2"
         android:textColor="#2db7ff"
-        android:onClick="onRadioButtonClickOption3"/>
+        android:onClick="onRadioButtonClickOption3"
+        android:layout_below="@+id/radioButtonOption2"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Voll aufladen"
         android:id="@+id/radioButtonOption4"
-        android:layout_below="@+id/radioButtonOption3"
-        android:layout_alignLeft="@+id/radioButtonOption3"
         android:layout_alignStart="@+id/radioButtonOption3"
         android:textColor="#2db7ff"
-        android:onClick="onRadioButtonClickOption4"/>
+        android:onClick="onRadioButtonClickOption4"
+        android:layout_below="@+id/radioButtonOption3"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,12 +71,22 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Bitte Ladezyklus wählen:"
         android:id="@+id/textViewTipp"
-        android:layout_marginTop="47dp"
-        android:layout_below="@+id/textViewTitle"
-        android:layout_alignLeft="@+id/radioButtonOption1"
-        android:layout_alignStart="@+id/radioButtonOption1"
+        android:layout_marginTop="50dp"
         android:textColor="#2db7ff"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_below="@+id/textViewTitle"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/button"
+        android:layout_marginBottom="134dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="logoutClick"/>
 
 
 </RelativeLayout>

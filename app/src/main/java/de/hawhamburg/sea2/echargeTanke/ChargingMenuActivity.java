@@ -14,6 +14,7 @@ import de.hawhamburg.sea2.echargeTanke.chargingActivities.ChargingProgressActivi
 import de.hawhamburg.sea2.echargeTanke.chargingActivities.ChargingProgressActivityOption2;
 import de.hawhamburg.sea2.echargeTanke.chargingActivities.ChargingProgressActivityOption3;
 import de.hawhamburg.sea2.echargeTanke.chargingActivities.ChargingProgressActivityOption4;
+import de.hawhamburg.sea2.echargeTanke.library.DatabaseHandler;
 
 
 public class ChargingMenuActivity extends ActionBarActivity {
@@ -86,6 +87,15 @@ public class ChargingMenuActivity extends ActionBarActivity {
         radioButtonOption3.setChecked(false);
         Intent optionProgress3 = new Intent(this, ChargingProgressActivityOption3.class);
         startActivity(optionProgress3);
+    }
+
+    public void logoutClick(View view) {
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        db.resetTables();
+
+        Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(login);
     }
 
     /**
